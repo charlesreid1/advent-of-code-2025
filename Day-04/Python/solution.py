@@ -6,15 +6,22 @@ def part1(filename):
     with open(f, 'r') as f:
         grid_lines = [line.strip() for line in f]
 
+    # Normalize the Grid: Find the maximum width
+    if not grid_lines:
+        return # Or raise an error, depending on desired behavior for empty files
+    
+    max_cols = max(len(line) for line in grid_lines)
+    
     grid = []
     for line in grid_lines:
-        row = []
-        for char in line:
-            row.append(char)
+        row = list(line)
+        # Pad shorter rows with '.' so the grid is a perfect rectangle
+        while len(row) < max_cols:
+            row.append('.')
         grid.append(row)
 
     rows = len(grid)
-    cols = len(grid[0]) if rows > 0 else 0
+    cols = max_cols
 
     accessible_rolls = 0
     
