@@ -1,11 +1,13 @@
 import sys
+import os
 
 def part1(filename):
     current_position = 50
     zero_count = 0
 
+    f = os.path.join('..', filename)
     try:
-        with open(filename, 'r') as f:
+        with open(f, 'r') as f:
             for line in f:
                 line = line.strip()
                 if not line:
@@ -33,8 +35,9 @@ def part2(filename):
     current_position_unwrapped = 50
     zero_count = 0
 
+    f = os.path.join('..', filename)
     try:
-        with open(filename, 'r') as f:
+        with open(f, 'r') as f:
             for line in f:
                 line = line.strip()
                 if not line:
@@ -65,8 +68,8 @@ def part2(filename):
         sys.exit(1)
 
 if __name__ == "__main__":
-    #part1("example")
-    #part1("input")
+    part1("example")
+    part1("input")
     part2("example")
     part2("input")
 
