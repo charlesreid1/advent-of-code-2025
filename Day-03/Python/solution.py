@@ -1,3 +1,6 @@
+from pathlib import Path
+
+
 def get_max_joltage_12_digits(s):
     k = 12
     n = len(s)
@@ -23,8 +26,9 @@ def get_max_joltage_12_digits(s):
 
 
 def part1(filename):
+    f = Path(__file__).resolve().parent.parent / filename
     total_output_joltage = 0
-    with open(filename, 'r') as file:
+    with open(f, 'r') as file:
         for line in file:
             line = line.strip()
             max_bank_joltage = max((int(line[i] + line[j]) for i in range(len(line)) for j in range(i + 1, len(line))), default=0)
@@ -35,7 +39,8 @@ def part1(filename):
 
 
 def part2(filename):
-    with open(filename, 'r') as file:
+    f = Path(__file__).resolve().parent.parent / filename
+    with open(f, 'r') as file:
         total_output_joltage = sum(
             get_max_joltage_12_digits(line.strip())
             for line in file
