@@ -1,6 +1,8 @@
-# Intentionally obtuse
+import os
+from pathlib import Path
 
-def part1(f):
+def part1(filename):
+    f = Path(__file__).resolve().parent.parent / filename
     ranges = sorted(list(map(lambda r: tuple(map(int, r.split('-'))), open(f).read().strip().split(','))))
 
     def generate_invalid_ids():
@@ -11,7 +13,8 @@ def part1(f):
 
     print(sum(filter(lambda inv_id: any(s <= inv_id <= e for s, e in ranges), generate_invalid_ids())))
 
-def part2(f):
+def part2(filename):
+    f = Path(__file__).resolve().parent.parent / filename
     ranges = sorted(list(map(lambda r: tuple(map(int, r.split('-'))), open(f).read().strip().split(','))))
 
     def generate_invalid_ids():
