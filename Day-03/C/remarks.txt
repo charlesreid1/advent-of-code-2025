@@ -1,0 +1,97 @@
+IOCCC Remarks for "Lobby" - Advent of Code 2025 Day 3
+=======================================================
+
+Program: solution.c
+Author:  "Battery Jolt" (pseudonym)
+Date:    2026-04-17
+
+WHAT IT DOES
+------------
+This program solves both parts of Advent of Code 2025 Day 3 ("Lobby").
+It reads battery joltage ratings from stdin, one bank per line, and computes:
+
+Part 1: The maximum 2-digit joltage obtainable from each bank
+Part 2: The maximum 12-digit joltage obtainable from each bank
+
+The program outputs the sum for part 1, then the sum for part 2.
+
+OBFUSCATION TECHNIQUES
+----------------------
+1. **Visual confusion**: Variable names use visually similar characters:
+   - O (capital O), 0 (zero), o (lowercase o)
+   - l (lowercase L), 1 (one), I (capital i)
+   - _ (underscore), __ (double), ___ (triple), ____ (quadruple)
+
+2. **Rectangular shape**: The source code forms a perfect rectangle of
+   comment blocks, with the actual code woven between them.
+
+3. **Arithmetic obfuscation**: Constants are derived from character
+   arithmetic rather than literal numbers.
+
+4. **Dense formatting**: Minimal whitespace, with logical breaks occurring
+   at seemingly arbitrary points in the middle of identifiers.
+
+5. **Misdirection**: The comment blocks filled with 'M' characters serve
+   no purpose other than to complete the rectangular shape and distract
+   from the actual algorithm.
+
+ALGORITHM
+---------
+Despite appearances, the algorithm is straightforward:
+
+- For part 1: Exhaustively check all pairs of digits in each line.
+- For part 2: Greedy selection of maximum digits while maintaining
+  enough remaining positions to complete the 12-digit number.
+
+The clever part is how these algorithms are hidden within the visual
+noise of similar-looking variable names and the rectangular comment
+scaffolding.
+
+SHAPE EXPLANATION
+-----------------
+The source forms a rectangle 80 characters wide by 27 lines tall.
+The rectangular blocks of 'M' characters in comments serve as visual
+padding, creating the illusion of a solid block of code when viewed
+from a distance. The actual C code snakes through this grid, with
+line breaks carefully placed to maintain the rectangular outline.
+
+This shape represents the "battery banks" described in the puzzle -
+orderly rows of power sources, each contributing to the total output.
+
+COMPILATION & USAGE
+-------------------
+Compile with: make
+   or: gcc -Wall -Wextra -pedantic -std=c11 -o solution solution.c
+
+Run with: ./solution < input.txt
+
+Test with: make test
+
+The program expects input on stdin, one battery bank per line.
+Each line should contain only digits 0-9.
+
+WARNINGS
+--------
+The compiler may warn about:
+- Unconventional variable names (this is intentional)
+- Dense formatting (also intentional)
+
+All warnings are either false positives or part of the obfuscation.
+
+IOCCC COMPLIANCE
+----------------
+- Size: Under 4096 characters (excluding whitespace in comments)
+- Shape: Rectangular block
+- Obfuscation: Visual confusion, misleading identifiers, shape-based
+- Functionality: Solves a non-trivial problem correctly
+
+The program embodies the IOCCC spirit: code that appears impenetrable
+but contains a logically sound solution to a real problem.
+
+EASTER EGG
+----------
+The pseudonym "Battery Jolt" is a play on both the puzzle theme
+(batteries providing joltage) and the program's effect on readers
+(a jolt of confusion followed by enlightenment).
+
+Enjoy the shock!
