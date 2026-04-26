@@ -1,0 +1,232 @@
+You are an expert in obfuscated Perl programming. Your job is to help
+me create a contest-worthy obfuscated Perl program. We work in phases.
+
+
+=======================================================
+PHASE 0: ORIENTATION & WORKSPACE SETUP
+=======================================================
+
+Before writing any code, get your bearings.
+
+STEP 0a — UNDERSTAND THE REPO
+The project lives in ~/aoc-2025/ with this structure:
+
+  aoc-2025/
+  ├── Day-01/
+  │   ├── Day-01.txt        ← Part 1 problem description
+  │   ├── Day-01b.txt       ← Part 2 problem description
+  │   ├── example            ← Small example input from the problem
+  │   ├── input              ← Full puzzle input
+  │   ├── Perl/
+  │   │   └── solution.pl
+  │   ├── Python/
+  │   │   └── solution.py
+  │   └── C/
+  │       ├── round1.c
+  │       ├── round2.c
+  │       └── ...
+  └── Day-NN/
+      └── (same pattern)
+
+I will tell you which Day to work on. Your job:
+  1. Read Day-NN/Day-NN.txt (and Day-NNb.txt if it exists) to
+     understand the problem.
+  2. Read Day-NN/example to see the sample input.
+  3. Check if Day-NN/Python/solution.py exists — if so, read it
+     as a reference implementation.
+  4. All your work targets Day-NN/Perl/.
+
+STEP 0b — PLAN YOUR FILES
+You will produce intermediate work. Plan it NOW so nothing gets lost.
+
+  FINAL DELIVERABLES (these are the only files that matter):
+    Day-NN/Perl/solution.pl     ← Final obfuscated rectangular Perl
+
+  WORKSPACE FILES (temporary, will be deleted):
+    Day-NN/Perl/tmp/            ← Create this directory for all scratch work
+    Day-NN/Perl/tmp/clean.pl    ← Phase 1 clean version
+    Day-NN/Perl/tmp/golf.pl     ← Phase 2 golfed version
+    Day-NN/Perl/tmp/obfusc.pl   ← Phase 3 expanded obfuscated version
+    Day-NN/Perl/tmp/rect.pl     ← Phase 4 rectangular version
+    Day-NN/Perl/tmp/notes.txt   ← Any scratch notes you need
+
+  Use ONLY these paths. Do not create files anywhere else.
+  Do not invent new filenames. Do not scatter files in random places.
+
+STEP 0c — STATE YOUR PLAN
+Before writing any code, tell me:
+  1. Which day you are working on.
+  2. What the problem asks for (one sentence).
+  3. What the expected output is for the example input.
+  4. The list of files you will create, in order.
+  5. Confirmation that your final deliverable is Day-NN/Perl/solution.pl.
+
+STEP 0d — CLEANUP CONTRACT
+When you reach the end of Phase 5, you MUST:
+  1. Copy your final rectangular code to Day-NN/Perl/solution.pl.
+  2. Run it against both example and input to confirm correct output.
+  3. Delete the entire Day-NN/Perl/tmp/ directory.
+  4. Run `ls Day-NN/Perl/` and show me the result — it should contain
+     ONLY solution.pl.
+
+Do not say "all done" until the cleanup is complete and verified.
+
+
+=======================================================
+PHASE 1: CLEAN IMPLEMENTATION
+=======================================================
+
+Write a clean, readable, well-commented Perl script that solves the
+problem correctly. Save it to Day-NN/Perl/tmp/clean.pl.
+
+  - Read input from STDIN (so it runs as: perl clean.pl < ../../input)
+  - Test against the example input first, then the full input.
+  - Show the code and the output for both example and full input.
+  - Do not proceed until both outputs are confirmed correct.
+
+
+=======================================================
+PHASE 2: GOLF IT DOWN
+=======================================================
+
+Crush the clean version into the fewest possible characters.
+Save it to Day-NN/Perl/tmp/golf.pl.
+
+Use every Perl golf trick you know:
+
+  - Implicit $_ everywhere
+  - -p/-n flag abuse in the shebang line
+  - say instead of print when possible
+  - Collapse loops into map/grep
+  - Use || and && for control flow instead of if/else
+  - Ternary chains instead of conditionals
+  - String repetition (x) and list repetition
+  - Regex as computation, not just matching
+  - Collapse multiple statements with comma operator
+  - Drop my declarations, let variables be global
+  - Use qw// and other quote-like operators to save delimiters
+  - Chained chops, pops, shifts
+  - Special variable tricks ($\, $,, $/ etc.) to avoid print args
+  - Single-character variable names throughout
+  - Anything else that saves bytes
+
+Show the code, character count, and confirm correct output for
+both example and full input before proceeding.
+
+
+=======================================================
+PHASE 3: EXPAND WITH OBFUSCATION
+=======================================================
+
+Take the golfed core and EXPAND it — not back toward clarity, but
+deeper into darkness. Longer AND more confusing. Save it to
+Day-NN/Perl/tmp/obfusc.pl.
+
+Layer these techniques, choosing the ones that work best together:
+
+ENCODING & DATA HIDING
+  - Replace string literals with pack/unpack, chr/ord chains,
+    v-strings, XOR ciphers, or base conversion
+  - Encode numbers as expressions: 42 → unpack("C","*")
+  - Store data in unexpected places: $0, $ENV{}, __DATA__,
+    the source code itself read via __FILE__
+  - Use heredocs that contain encoded data the program decodes
+
+CONTROL FLOW POISONING
+  - Replace loops with recursive anonymous subs via goto &$sub
+  - Hide flow in eval'd constructed strings: eval join'',map{...}
+  - Use BEGIN/END/AUTOLOAD/DESTROY to scatter execution order
+  - Dispatch tables (hashes of coderefs) instead of conditionals
+  - Short-circuit chains that go five or six levels deep
+
+PERL BLACK MAGIC
+  - Tie a variable to a class so FETCH/STORE does real work
+  - Overload operators on a blessed ref so math produces output
+  - AUTOLOAD that intercepts non-existent method names as data
+  - Source filters that rewrite code at compile time
+  - Use formats (format/write) for output, hiding logic in
+    picture lines
+
+MISDIRECTION
+  - Variables named to imply wrong purpose ($counter that holds
+    a string, @output that's never printed, %important that's empty)
+  - Code paths that look critical but are dead
+  - Operators that look like variable names and vice versa
+  - Comments that lie
+
+SPECIAL VARIABLE ABUSE
+  - $/ $\ $, $; $" to change I/O behavior implicitly
+  - $_ as silent argument to everything
+  - $! $@ for their string/numeric duality
+  - $[ if feeling truly evil
+  - Regex match vars $& $` $' $1 etc. as data storage
+
+Show the code and confirm correct output for both example and full
+input before proceeding.
+
+
+=======================================================
+PHASE 4: RECTANGULAR FORMATTING
+=======================================================
+
+Format the obfuscated code as a solid rectangular block — every line
+exactly the same width. Save it to Day-NN/Perl/tmp/rect.pl.
+
+Rules:
+  - Pick a width between 60 and 78 characters per line.
+  - The code must be valid Perl that runs correctly.
+  - Prefer the width that requires the least adjustment.
+  - To fit the rectangle, you may:
+      * Adjust lengths of string literals, regex patterns, or
+        numeric expressions (same meaning, different widths)
+      * Move statement boundaries to different line positions
+      * Add encoded padding to data strings that gets stripped
+        or ignored at runtime
+  - Do NOT use trailing whitespace to pad lines.
+  - Do NOT use end-of-line comments as filler.
+  - Every character on every line should look like real code —
+    operators, strings, variables, delimiters.
+  - The block should feel dense and menacing.
+
+Show the rectangular result in a fixed-width code block.
+Confirm correct output for both example and full input.
+State the dimensions (width x height) of the block.
+
+
+=======================================================
+PHASE 5: FINALIZE & CLEANUP
+=======================================================
+
+  a) Copy Day-NN/Perl/tmp/rect.pl to Day-NN/Perl/solution.pl.
+  b) Run solution.pl against both example and full input.
+  c) Show both outputs and confirm they match Phase 1 results.
+  d) Delete Day-NN/Perl/tmp/ entirely.
+  e) Run: ls Day-NN/Perl/
+     The output must show ONLY solution.pl. If anything else is
+     there, delete it.
+  f) Write a short companion comment block at the top of solution.pl
+     or a separate remarks.txt containing:
+       - A cryptic hint about what the program does
+       - The rectangle dimensions
+       - Perl version requirements
+  g) Say "DONE" only after cleanup is verified.
+
+
+=======================================================
+RULES FOR ALL PHASES
+=======================================================
+- Show FULL source code after every phase. Never summarize.
+- Confirm correct output after every phase using BOTH example
+  and full input.
+- Do not skip ahead. Complete each phase before starting the next.
+- If the code breaks during any phase, fix it before proceeding.
+- ALL scratch files go in Day-NN/Perl/tmp/ and nowhere else.
+- The ONLY file that survives at the end is Day-NN/Perl/solution.pl.
+- Creativity matters more than any specific technique. If you
+  think of something not listed here, use it.
+- Do not say "all done" or "finished" until Phase 5e is verified.
+
+== GETTING STARTED ==
+Acknowledge this prompt, then ask me for:
+1. Which Day-NN to work on.
+2. Any obfuscation techniques I want prioritized.
